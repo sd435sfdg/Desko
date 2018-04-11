@@ -430,11 +430,6 @@
               <FileType>1</FileType>
               <FilePath>../Src/main.c</FilePath>
             </File>
-            <File>
-              <FileName>max7219.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\max7219.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

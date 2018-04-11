@@ -6,11 +6,10 @@ desko\stm32f1xx_hal_rtc.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc
 desko\stm32f1xx_hal_rtc.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 desko\stm32f1xx_hal_rtc.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 desko\stm32f1xx_hal_rtc.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
-desko\stm32f1xx_hal_rtc.o: ../Drivers/CMSIS/Include/core_cm3.h
+desko\stm32f1xx_hal_rtc.o: C:\Keil\ARM\CMSIS\Include\core_cm3.h
 desko\stm32f1xx_hal_rtc.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
-desko\stm32f1xx_hal_rtc.o: ../Drivers/CMSIS/Include/core_cmInstr.h
-desko\stm32f1xx_hal_rtc.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
-desko\stm32f1xx_hal_rtc.o: ../Drivers/CMSIS/Include/core_cmFunc.h
+desko\stm32f1xx_hal_rtc.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
+desko\stm32f1xx_hal_rtc.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
 desko\stm32f1xx_hal_rtc.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 desko\stm32f1xx_hal_rtc.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 desko\stm32f1xx_hal_rtc.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h

@@ -6,11 +6,10 @@ desko\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h
 desko\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 desko\main.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 desko\main.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
-desko\main.o: ../Drivers/CMSIS/Include/core_cm3.h
+desko\main.o: C:\Keil\ARM\CMSIS\Include\core_cm3.h
 desko\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
-desko\main.o: ../Drivers/CMSIS/Include/core_cmInstr.h
-desko\main.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
-desko\main.o: ../Drivers/CMSIS/Include/core_cmFunc.h
+desko\main.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
+desko\main.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
 desko\main.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 desko\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 desko\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
@@ -27,4 +26,3 @@ desko\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc.h
 desko\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc_ex.h
 desko\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 desko\main.o: ../Inc/WordClock.h
-desko\main.o: ../Inc/max7219.h

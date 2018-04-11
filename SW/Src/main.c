@@ -39,7 +39,6 @@
 #include "main.h"
 #include "stm32f1xx_hal.h"
 #include "WordClock.h"
-#include "max7219.h"
 
 /* USER CODE BEGIN Includes */
 

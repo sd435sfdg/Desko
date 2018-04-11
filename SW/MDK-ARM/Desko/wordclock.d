@@ -7,11 +7,10 @@ desko\wordclock.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h
 desko\wordclock.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 desko\wordclock.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 desko\wordclock.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
-desko\wordclock.o: ../Drivers/CMSIS/Include/core_cm3.h
+desko\wordclock.o: C:\Keil\ARM\CMSIS\Include\core_cm3.h
 desko\wordclock.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
-desko\wordclock.o: ../Drivers/CMSIS/Include/core_cmInstr.h
-desko\wordclock.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
-desko\wordclock.o: ../Drivers/CMSIS/Include/core_cmFunc.h
+desko\wordclock.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
+desko\wordclock.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
 desko\wordclock.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 desko\wordclock.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 desko\wordclock.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h

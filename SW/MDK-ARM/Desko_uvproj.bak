@@ -538,7 +538,7 @@
             <File>
               <FileName>WordClock.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\WordClock.c</FilePath>
+              <FilePath>..\Src\WordClock.c</FilePath>
             </File>
           </Files>
         </Group>

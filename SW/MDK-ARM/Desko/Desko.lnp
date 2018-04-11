@@ -3,7 +3,7 @@
 "desko\stm32f1xx_it.o"
 "desko\stm32f1xx_hal_msp.o"
 "desko\main.o"
-"desko\max7219.o"
+"desko\wordclock.o"
 "desko\system_stm32f1xx.o"
 "desko\stm32f1xx_hal_tim_ex.o"
 "desko\stm32f1xx_hal.o"
@@ -21,7 +21,6 @@
 "desko\stm32f1xx_hal_rcc.o"
 "desko\stm32f1xx_hal_spi_ex.o"
 "desko\stm32f1xx_hal_cortex.o"
-"desko\wordclock.o"
 --library_type=microlib --strict --scatter "Desko\Desko.sct"
 
 --diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
