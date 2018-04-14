@@ -2,39 +2,119 @@
 <body>
 <pre>
 <h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.17.0.0
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Binh Le, Bosch, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.17
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 1 (build 61)
+Assembler:       Armasm.exe V5.06 update 1 (build 61)
+Linker/Locator:  ArmLink.exe V5.06 update 1 (build 61)
+Library Manager: ArmAr.exe V5.06 update 1 (build 61)
+Hex Converter:   FromElf.exe V5.06 update 1 (build 61)
+CPU DLL:         SARMCM3.DLL V5.17
+Dialog DLL:      DCM.DLL V1.13.4.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
+Dialog DLL:      TCM.DLL V1.14.6.0
+ 
 <h2>Project:</h2>
-D:\Workspace\STM32\Desko\SW\MDK-ARM\Desko.uvproj
-Project File Date:  04/12/2018
+D:\PROJECTS\Startup\Desko\Desko\SW\MDK-ARM\Desko.uvproj
+Project File Date:  04/14/2018
 
 <h2>Output:</h2>
+*** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Desko'
-assembling startup_stm32f103xb.s...
-compiling stm32f1xx_it.c...
 compiling stm32f1xx_hal_msp.c...
-compiling main.c...
-compiling WordClock.c...
-..\Src\WordClock.c(42): warning:  #177-D: variable "packet" was declared but never referenced
-        uint16_t packet[NUM_MAX7219] = {(row - 6) << 8 | (data & 0x0400)>>6 |
-..\Src\WordClock.c(77): warning:  #177-D: variable "is_past_half" was declared but never referenced
-        bool is_past_half = (minute>30)?true:false;
-..\Src\WordClock.c: 2 warnings, 0 errors
-compiling system_stm32f1xx.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Src/stm32f1xx_hal_msp.c: 0 warnings, 1 error
+compiling stm32f1xx_it.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Src/stm32f1xx_it.c: 0 warnings, 1 error
+assembling startup_stm32f103xb.s...
 compiling stm32f1xx_hal_tim_ex.c...
-compiling stm32f1xx_hal.c...
-compiling stm32f1xx_hal_pwr.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c: 0 warnings, 1 error
+compiling system_stm32f1xx.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Src/system_stm32f1xx.c: 0 warnings, 1 error
+compiling main.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Src/main.c: 0 warnings, 1 error
 compiling stm32f1xx_hal_rcc_ex.c...
-compiling stm32f1xx_hal_flash_ex.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c: 0 warnings, 1 error
+compiling stm32f1xx_hal.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c: 0 warnings, 1 error
+compiling stm32f1xx_hal_pwr.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c: 0 warnings, 1 error
 compiling stm32f1xx_hal_spi.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c: 0 warnings, 1 error
 compiling stm32f1xx_hal_tim.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c: 0 warnings, 1 error
+compiling stm32f1xx_hal_flash_ex.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c: 0 warnings, 1 error
 compiling stm32f1xx_hal_rtc.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc.c: 0 warnings, 1 error
 compiling stm32f1xx_hal_rtc_ex.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc_ex.c: 0 warnings, 1 error
 compiling stm32f1xx_hal_flash.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c: 0 warnings, 1 error
 compiling stm32f1xx_hal_gpio.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c: 0 warnings, 1 error
 compiling stm32f1xx_hal_gpio_ex.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c: 0 warnings, 1 error
 compiling stm32f1xx_hal_dma.c...
-compiling stm32f1xx_hal_rcc.c...
-compiling stm32f1xx_hal_spi_ex.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c: 0 warnings, 1 error
 compiling stm32f1xx_hal_cortex.c...
-linking...
-Program Size: Code=6502 RO-data=294 RW-data=12 ZI-data=1132  
-"Desko\Desko.axf" - 0 Error(s), 2 Warning(s).
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c: 0 warnings, 1 error
+compiling stm32f1xx_hal_rcc.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c: 0 warnings, 1 error
+compiling stm32f1xx_hal_spi_ex.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.c: 0 warnings, 1 error
+compiling WordClock.c...
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h(150): error:  #5: cannot open source input file "core_cm3.h": No such file or directory
+  #include "core_cm3.h"
+..\Src\WordClock.c: 0 warnings, 1 error
+"Desko\Desko.axf" - 21 Error(s), 0 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:33
+</pre>
+</body>
+</html>
