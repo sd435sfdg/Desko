@@ -55,6 +55,8 @@ void led_init(SPI_HandleTypeDef *hspi)
 	clean_all_bits(hspi);
 	HAL_Delay(3000);
 	send_all(hspi, REG_DISPLAY_TEST|0x00);
+	uint16_t data[4] = {0x0000, 0x0000, REG_SHUTDOWN|0x00, 0x0000};
+	send_packet(hspi, (uint8_t *)data);
 }
 
 void clean_all_rows(SPI_HandleTypeDef *hspi)
@@ -73,46 +75,100 @@ void clean_all_bits(SPI_HandleTypeDef *hspi)
 
 void led_run(SPI_HandleTypeDef *hspi, uint8_t hour, uint8_t minute)
 {
-	clean_all_rows(hspi);
-	bool is_past_half = (minute>30)?true:false;
-	set_row(hspi, 1, IT_IS);
-	switch(minute)
-	 {
-//		 case 0:{
-//		 }
-		 case 5: case 55:{
+	static bool is_first_run = true;
+	static uint8_t update_minute, update_hour;
+	if(is_first_run == true){
+		update_minute = minute/5;
+		update_hour = hour < 12 ? hour : hour-12;
+		set_row(hspi, 1, IT_IS);
+	}
+	else if(minute/5 == update_minute) return;
+	update_minute = minute/5;
+	if(update_minute > 6) set_row(hspi, 4, TO);
+	else if(update_minute > 0)  set_row(hspi, 5, PAST);
+	switch(update_minute)
+	  {
+		  case 0:{
+			 if(hour == 10 || hour == 22) set_row(hspi, 10, TEN|OCLOCK);
+       else	set_row(hspi, 10, OCLOCK);		
+			 set_row(hspi, 3, 0);
+			 set_row(hspi, 4, 0);
+		  }
+		  case 1: {
 			 set_row(hspi, 3, M_FIVE);
+			 if(hour == 7 || hour == 19) set_row(hspi, 5, PAST|SEVEN);
+       else	set_row(hspi, 5, PAST);	
+       if(hour == 10 || hour == 22) set_row(hspi, 10, TEN);
+       else	set_row(hspi, 10, 0);				
 			 break;
-		 }
-		 case 10: case 50:{
+		  }
+		  case 2: {
 			 set_row(hspi, 4, M_TEN);
+			 set_row(hspi, 3, 0);
 			 break;
-		 }
-		 case 15: case 45:{
+		  }
+		  case 3: {
 			 set_row(hspi, 2, QUARTER);
+			 set_row(hspi, 4, 0);
 			 break;
-		 }
-		 case 20: case 40:{
+		  }
+		  case 4: {
 			 set_row(hspi, 3, TWENTY);
+			 set_row(hspi, 2, 0);
 			 break;
-		 }
-		 case 25: case 35:{
+		  }
+		  case 5: {
 			 set_row(hspi, 3, TWENTY_FIVE);
 			 break;
-		 }
-		 case 30:{
+		  }
+		  case 6:{			 
 			 set_row(hspi, 4, HALF);
+			 set_row(hspi, 3, 0);
 			 break;
-		 }
-	 }
-	switch(hour)
+		  }
+			case 7:{			 
+			 set_row(hspi, 3, TWENTY_FIVE);
+			 set_row(hspi, 4, TO);
+			 hour++;
+			 if(hour == 7 || hour == 19) set_row(hspi, 5, SEVEN);
+			 else set_row(hspi, 5, 0);
+			 break;
+		  }
+			case 8: {
+			 set_row(hspi, 3, TWENTY);
+			 break;
+		  }
+			case 9: {
+			 set_row(hspi, 2, QUARTER);
+			 set_row(hspi, 3, 0);
+			 break;
+		  }
+			case 10: {
+			 set_row(hspi, 4, TEN|TO);
+			 set_row(hspi, 2, 0);
+			 break;
+		  }
+			case 11: {
+			 set_row(hspi, 3, FIVE);
+			 set_row(hspi, 4, TO);
+			 break;
+		  }
+	  }
+	if(is_first_run == false){
+	 if(hour == update_hour || update_hour == hour - 12) return;	
+	}
+	update_hour = hour < 12 ? hour : hour-12;
+	update_hour = update_hour < 12 ? update_hour : update_hour-12;
+	switch(update_hour)
 	 {
 		 case 0: {
 			 set_row(hspi, 8, TWELVE);
+			 set_row(hspi, 9, 0);
 			 break;
 		 }
 		 case 1: {
 			 set_row(hspi, 6, ONE);
+			 set_row(hspi, 8, 0);
 			 break;
 		 }
 		 case 2: {
@@ -125,6 +181,7 @@ void led_run(SPI_HandleTypeDef *hspi, uint8_t hour, uint8_t minute)
 		 }
 		 case 4: {
 			 set_row(hspi, 7, FOUR);
+			 set_row(hspi, 6, 0);
 			 break;
 		 }
 		 case 5: {
@@ -135,5 +192,32 @@ void led_run(SPI_HandleTypeDef *hspi, uint8_t hour, uint8_t minute)
 			 set_row(hspi, 7, SIX);
 			 break;
 		 }
-	 }	 
+		 case 7: {
+			 set_row(hspi, 5, SEVEN);
+			 set_row(hspi, 7, 0);
+			 break;
+		 }
+		 case 8: {
+			 set_row(hspi, 9, EIGHT);
+			 set_row(hspi, 5, 0);
+			 break;
+		 }
+		 case 9: {
+			 set_row(hspi, 8, NINE);
+			 set_row(hspi, 9, 0);
+			 break;
+		 }
+		 case 10: {
+			 set_row(hspi, 10, TEN);
+			 set_row(hspi, 8, 0);
+			 break;
+		 }
+		 case 11: {
+			 set_row(hspi, 9, ELEVEN);
+			 set_row(hspi, 10, 0);
+			 break;
+		 }
+	 }	
+ is_first_run = false;	
+ return;	 
 }
