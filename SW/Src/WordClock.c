@@ -68,7 +68,7 @@ void clean_all_bits(SPI_HandleTypeDef *hspi)
 	}
 }
 
-void word_display(SPI_HandleTypeDef *hspi, uint8_t hour, uint8_t minute)
+void display_word(SPI_HandleTypeDef *hspi, uint8_t hour, uint8_t minute)
 {
 	static bool is_first_run = true;
 	static uint8_t update_minute, update_hour;
@@ -214,4 +214,9 @@ void word_display(SPI_HandleTypeDef *hspi, uint8_t hour, uint8_t minute)
 	 }	
  is_first_run = false;	
  return;	 
+}
+
+void display_number(SPI_HandleTypeDef *hspi, uint8_t hour, uint8_t minute)
+{
+	
 }

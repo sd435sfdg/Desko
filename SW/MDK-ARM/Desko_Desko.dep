@@ -53,7 +53,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x5AD4687D)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc.h)(0x5AD4687D)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc_ex.h)(0x5AD4687D)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x5AD4687D)
-F (../Src/main.c)(0x5AD46C22)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -IC:\Users\PC\Desktop\MAX7219-master\MAX7219-master\src --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-DUSE_HAL_DRIVER -DSTM32F103xB-o desko\main.o --omf_browse desko\main.crf --depend desko\main.d)
+F (../Src/main.c)(0x5AD4C37C)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -IC:\Users\PC\Desktop\MAX7219-master\MAX7219-master\src --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-DUSE_HAL_DRIVER -DSTM32F103xB-o desko\main.o --omf_browse desko\main.crf --depend desko\main.d)
 I (../Inc/main.h)(0x5AD4687D)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5AD4687D)
 I (../Inc/stm32f1xx_hal_conf.h)(0x5AD4687D)
@@ -79,7 +79,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x5AD4687D)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc.h)(0x5AD4687D)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc_ex.h)(0x5AD4687D)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x5AD4687D)
-I (../Inc/WordClock.h)(0x5AD46C22)
+I (../Inc/WordClock.h)(0x5AD4C37F)
 F (../Src/system_stm32f1xx.c)(0x5AD4687D)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -IC:\Users\PC\Desktop\MAX7219-master\MAX7219-master\src --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-DUSE_HAL_DRIVER -DSTM32F103xB-o desko\system_stm32f1xx.o --omf_browse desko\system_stm32f1xx.crf --depend desko\system_stm32f1xx.d)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x5AD4687D)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h)(0x5AD4687D)
@@ -522,8 +522,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x5AD4687D)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc.h)(0x5AD4687D)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc_ex.h)(0x5AD4687D)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x5AD4687D)
-F (..\Src\WordClock.c)(0x5AD46C22)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -IC:\Users\PC\Desktop\MAX7219-master\MAX7219-master\src --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-DUSE_HAL_DRIVER -DSTM32F103xB-o desko\wordclock.o --omf_browse desko\wordclock.crf --depend desko\wordclock.d)
-I (../Inc/WordClock.h)(0x5AD46C22)
+F (..\Src\WordClock.c)(0x5AD4C37F)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -IC:\Users\PC\Desktop\MAX7219-master\MAX7219-master\src --C99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-DUSE_HAL_DRIVER -DSTM32F103xB-o desko\wordclock.o --omf_browse desko\wordclock.crf --depend desko\wordclock.d)
+I (../Inc/WordClock.h)(0x5AD4C37F)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x5AD4687D)
 I (../Inc/stm32f1xx_hal_conf.h)(0x5AD4687D)
 I (../Inc/main.h)(0x5AD4687D)
