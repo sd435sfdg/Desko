@@ -115,7 +115,7 @@ int main(void)
 
   /* USER CODE BEGIN 3 */
   HAL_RTC_GetTime(&hrtc, &rtc_time, RTC_FORMAT_BIN);
-  led_run(&hspi1, rtc_time.Hours, rtc_time.Minutes);
+  word_display(&hspi1, rtc_time.Hours, rtc_time.Minutes);
   }
   /* USER CODE END 3 */
 }

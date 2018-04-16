@@ -66,6 +66,6 @@ void set_row(SPI_HandleTypeDef *hspi, uint8_t row, uint16_t data);
 void led_init(SPI_HandleTypeDef *hspi);
 void clean_all_rows(SPI_HandleTypeDef *hspi);
 void clean_all_bits(SPI_HandleTypeDef *hspi);
-void led_run(SPI_HandleTypeDef *hspi, uint8_t hour, uint8_t minute);
+void word_display(SPI_HandleTypeDef *hspi, uint8_t hour, uint8_t minute);
 
 #endif //_WORDCLOCK_H
