@@ -227,10 +227,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>26</ColumnNumber>
+      <ColumnNumber>27</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>100</TopLine>
-      <CurrentLine>40</CurrentLine>
+      <TopLine>310</TopLine>
+      <CurrentLine>114</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>../Src/main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -539,10 +539,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>9</ColumnNumber>
+      <ColumnNumber>67</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>189</TopLine>
-      <CurrentLine>106</CurrentLine>
+      <TopLine>221</TopLine>
+      <CurrentLine>241</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Src\WordClock.c</PathWithFileName>
       <FilenameWithoutPath>WordClock.c</FilenameWithoutPath>

@@ -33,33 +33,6 @@ typedef enum {
 	RUNNING, EDITING
 }MODE;
 
-typedef enum {
-	IT_IS       = 0x06C0,
-	AM          = 0x000C,
-	PM          = 0x0003,
-	M_FIVE      = 0x000F,
-	M_TEN       = 0x0038,
-	QUARTER     = 0x03F8,
-	TWENTY      = 0x07E0,
-	TWENTY_FIVE = 0x07EF,
-	HALF        = 0x0780,
-	PAST        = 0x0780,
-	TO          = 0x0003,
-	ONE         = 0x0700,
-	TWO         = 0x00E0,
-	THREE       = 0x001F,
-	FOUR        = 0x0780,
-	FIVE        = 0x0078,
-	SIX         = 0x0007,
-	SEVEN       = 0x003E,
-	EIGHT       = 0x07C0,
-	NINE        = 0x0780,
-	TEN         = 0x0700,
-	ELEVEN      = 0x003F,
-	TWELVE      = 0x003F,
-	OCLOCK      = 0x003F
-}WORD_TABLE;
-
 void send_packet(SPI_HandleTypeDef *hspi, uint8_t *p_data);
 void send_all(SPI_HandleTypeDef *hspi, uint16_t data);
 void set_row(SPI_HandleTypeDef *hspi, uint8_t row, uint16_t data);
