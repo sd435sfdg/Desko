@@ -109,6 +109,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
   while (1)
   {
   /* USER CODE END WHILE */
@@ -116,6 +117,7 @@ int main(void)
   /* USER CODE BEGIN 3 */
   HAL_RTC_GetTime(&hrtc, &rtc_time, RTC_FORMAT_BIN);
   display_word(&hspi1, rtc_time.Hours, rtc_time.Minutes);
+
   }
   /* USER CODE END 3 */
 }
