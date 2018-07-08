@@ -1,0 +1,6 @@
+Added Pin To Net: NetName=LEDF_U2 Pin=U2-15
+Added Pin To Net: NetName=LEDG_U2 Pin=U2-17
+Added Pin To Net: NetName=LEDE_U2 Pin=U2-21
+Added Pin To Net: NetName=LEDH_U2 Pin=U2-22
+Added Pin To Net: NetName=LEDD_U2 Pin=U2-23
+Change Net Name : Old Net Name=LEDH_U2 New Net Name=LEDDP_U2

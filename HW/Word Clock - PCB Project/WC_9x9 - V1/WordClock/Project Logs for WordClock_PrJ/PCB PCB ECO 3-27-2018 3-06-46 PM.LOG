@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=LEDE_U4 Pin=U4-21
+Added Pin To Net: NetName=LEDE_U4 Pin=U4-15
+Added Member To Class: ClassName=Sche Member=Component U3 MAX7219CWG
+Added Member To Class: ClassName=Sche Member=Component U4 MAX7219CWG
