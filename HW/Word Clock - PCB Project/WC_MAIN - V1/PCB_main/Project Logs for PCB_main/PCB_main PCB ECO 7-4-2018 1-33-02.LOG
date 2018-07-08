@@ -1,0 +1,155 @@
+Removed Pin From Net: NetName=BUZZER Pin=BUZZER-1
+Removed Pin From Net: NetName=GND Pin=BUZZER-2
+Removed Pin From Net: NetName=VCC3V3 Pin=C15-1
+Removed Pin From Net: NetName=GND Pin=C15-2
+Removed Pin From Net: NetName=GND Pin=C16-1
+Removed Pin From Net: NetName=VCC3V3 Pin=D2-2
+Removed Pin From Net: NetName=VCC3V3 Pin=DS18B20-3
+Removed Pin From Net: NetName=VCC3V3 Pin=LED-1
+Removed Pin From Net: NetName=T1 Pin=P4-5
+Removed Pin From Net: NetName=T2 Pin=P4-6
+Removed Pin From Net: NetName=T3 Pin=P4-7
+Removed Pin From Net: NetName=T4 Pin=P4-8
+Removed Pin From Net: NetName=5V Pin=P5-2
+Removed Pin From Net: NetName=GND Pin=P8-10
+Removed Pin From Net: NetName=GND Pin=P8-11
+Removed Pin From Net: NetName=GND Pin=P8-12
+Removed Pin From Net: NetName=GND Pin=P8-13
+Removed Pin From Net: NetName=PB9 Pin=P9-1
+Removed Pin From Net: NetName=PB8 Pin=P9-2
+Removed Pin From Net: NetName=PB7 Pin=P9-3
+Removed Pin From Net: NetName=PB6 Pin=P9-4
+Removed Pin From Net: NetName=PB5 Pin=P9-5
+Removed Pin From Net: NetName=PB4 Pin=P9-6
+Removed Pin From Net: NetName=PB3 Pin=P9-7
+Removed Pin From Net: NetName=PA15 Pin=P9-8
+Removed Pin From Net: NetName=NetD2_1 Pin=Q1-2
+Removed Pin From Net: NetName=GND Pin=Q2-1
+Removed Pin From Net: NetName=GND Pin=Q3-1
+Removed Pin From Net: NetName=NetQ1_3 Pin=R7-2
+Removed Pin From Net: NetName=NetQ1_3 Pin=R8-2
+Removed Pin From Net: NetName=5V Pin=R10-1
+Removed Pin From Net: NetName=VCC3V3 Pin=R11-2
+Removed Pin From Net: NetName=T1 Pin=R12-1
+Removed Pin From Net: NetName=GND Pin=R15-2
+Removed Pin From Net: NetName=VCC3V3 Pin=R17-1
+Removed Pin From Net: NetName=BUZZER Pin=U5-2
+Removed Pin From Net: NetName=ADC Pin=U5-19
+Removed Pin From Net: NetName=T4 Pin=U5-29
+Removed Pin From Net: NetName=T3 Pin=U5-30
+Removed Pin From Net: NetName=T2 Pin=U5-31
+Removed Pin From Net: NetName=T1 Pin=U5-32
+Removed Member From Class: ClassName=Sche_Main Member=C15
+Removed Member From Class: ClassName=Sche_Main Member=C16
+Removed Member From Class: ClassName=Sche_Main Member=LED
+Removed Member From Class: ClassName=Sche_Main Member=P4
+Removed Member From Class: ClassName=Sche_Main Member=P9
+Removed Member From Class: ClassName=Sche_Main Member=Q2
+Removed Member From Class: ClassName=Sche_Main Member=Q3
+Removed Member From Class: ClassName=Sche_Main Member=R7
+Removed Member From Class: ClassName=Sche_Main Member=R8
+Removed Member From Class: ClassName=Sche_Main Member=R9
+Removed Member From Class: ClassName=Sche_Main Member=R10
+Removed Member From Class: ClassName=Sche_Main Member=R11
+Removed Member From Class: ClassName=Sche_Main Member=R15
+Change Component Comment : Designator=Q1 Old Comment=A1015 New Comment=C1815
+Change Component Designator: OldDesignator=BUZZER NewDesignator=P6
+Change Component Designator: OldDesignator=PIN NewDesignator=P7
+Change component parameters: Designator = "U5"; Footprint = "TSQFP50P900X900X160-48N"; UniqueID = "\CVBVBJWU"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ADC Channels"; Value = "10"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ADC Resolution"; Value = "12bit"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ADCs"; Value = "2(10 x 12 bit)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "https://datasheet.ciiva.com/16210/cd00161566-16210248.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://datasheet.ciiva.com/16210/cd00161566-16210248.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2Description"; Value = "https://datasheet.ciiva.com/14100/pustm-arm-microcont-stm32f103-en-14100508.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2URL"; Value = "https://datasheet.ciiva.com/14100/pustm-arm-microcont-stm32f103-en-14100508.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink3Description"; Value = "https://datasheet.ciiva.com/15122/getdatasheetpartid-69880-15122076.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink3URL"; Value = "https://datasheet.ciiva.com/15122/getdatasheetpartid-69880-15122076.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink4Description"; Value = "https://datasheet.ciiva.com/8054/1730126-8054942.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink4URL"; Value = "https://datasheet.ciiva.com/8054/1730126-8054942.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink5Description"; Value = "https://datasheet.ciiva.com/48687/001075658-da-01-en-mcu-64kb-mem-stm32f103c8t6-lqfp-48-stm-48687589.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink5URL"; Value = "https://datasheet.ciiva.com/48687/001075658-da-01-en-mcu-64kb-mem-stm32f103c8t6-lqfp-48-stm-48687589.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink6Description"; Value = "https://datasheet.ciiva.com/26816/stm32f103c8t6-26816902.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink6URL"; Value = "https://datasheet.ciiva.com/26816/stm32f103c8t6-26816902.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Data Bus Width"; Value = "32bit"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Device Core"; Value = "ARM Cortex M3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Dimensions"; Value = "7.2 x 7.2 x 1.45mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Family Name"; Value = "STM32F"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Height"; Value = "1.45mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Instruction Set Architecture"; Value = "RISC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Length"; Value = "7.2mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "STMicroelectronics"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer Part Number"; Value = "STM32F103C8T6"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Maximum Frequency"; Value = "72MHz"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Maximum Operating Temperature"; Value = "+85 °C"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Minimum Operating Temperature"; Value = "-40 °C"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mounting Type"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Number of ADC Units"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Number of CAN Channels"; Value = "1"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Number of I2C Channels"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Number of PWM Units"; Value = "1"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Number of SPI Channels"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Number of Timers"; Value = "3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Number of USART Channels"; Value = "3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package Type"; Value = "LQFP"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Pin Count"; Value = "48"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Pricing 1"; Value = "1=6.06, 10=5.438, 100=4.4558, 500=3.7931, 1000=3.199 (USD)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Program Memory Size"; Value = "64 kB"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Program Memory Type"; Value = "Flash"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Pulse Width Modulation"; Value = "1(16 bit) (Motor Control)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PWM Resolution"; Value = "16bit"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RAM Size"; Value = "20 kB"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Stock 1"; Value = "2771"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "497-6063-ND"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Timer Resolution"; Value = "16bit"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Timers"; Value = "3 x 16 bit"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Typical Operating Supply Voltage"; Value = "2 ? 3.6 V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "USB Channels"; Value = "1 x Device"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Width"; Value = "7.2mm"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R17"; Footprint = "RES-SM-0805"; UniqueID = "\FGUDCSPR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Value"; Value = "4K7"; VariantName = "[No Variations]"
+Added Component: Designator=P1(JP6)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=R18(RES-SM-0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "27k"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=C13-1
+Added Pin To Net: NetName=5V Pin=DS18B20-3
+Added Pin To Net: NetName=T1 Pin=P1-1
+Added Pin To Net: NetName=T2 Pin=P1-2
+Added Pin To Net: NetName=T3 Pin=P1-3
+Added Pin To Net: NetName=T4 Pin=P1-4
+Added Pin To Net: NetName=GND Pin=P1-5
+Added Pin To Net: NetName=VCC3V3 Pin=P1-6
+Added Pin To Net: NetName=VCC3V3 Pin=P5-2
+Added Pin To Net: NetName=5V Pin=P6-1
+Added Pin To Net: NetName=NetD2_1 Pin=P7-1
+Added Pin To Net: NetName=GND Pin=Q1-1
+Added Pin To Net: NetName=5V Pin=R17-1
+Added Pin To Net: NetName=BUZZER Pin=R18-1
+Added Pin To Net: NetName=NetQ1_3 Pin=R18-2
+Added Pin To Net: NetName=GND Pin=S1-1
+Added Pin To Net: NetName=GND Pin=S1-2
+Added Pin To Net: NetName=ADC Pin=U5-21
+Added Pin To Net: NetName=T4 Pin=U5-25
+Added Pin To Net: NetName=T3 Pin=U5-26
+Added Pin To Net: NetName=T2 Pin=U5-27
+Added Pin To Net: NetName=T1 Pin=U5-28
+Added Pin To Net: NetName=BUZZER Pin=U5-29
+Added Pin To Net: NetName=NetP6_2 Pin=P6-2
+Added Pin To Net: NetName=NetP6_2 Pin=Q1-2
+Added Net: Name=NetP6_2
+Added Pin To Net: NetName=PA11 Pin=R12-1
+Added Pin To Net: NetName=PA11 Pin=U5-32
+Added Net: Name=PA11
+Added Pin To Net: NetName=Vbat Pin=D2-2
+Added Pin To Net: NetName=Vbat Pin=U5-1
+Added Net: Name=Vbat
+Added Member To Class: ClassName=Sche_Main Member=Component P1 Header 6
+Added Member To Class: ClassName=Sche_Main Member=Component R18 RESISTOR SMD

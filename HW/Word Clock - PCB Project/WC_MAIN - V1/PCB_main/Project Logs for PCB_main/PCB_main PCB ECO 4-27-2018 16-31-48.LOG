@@ -1,0 +1,5 @@
+Added Component: Designator=Y2(XTAL_ABS25-32.768KHZ-6-1-T)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=PC14 Pin=Y2-1
+Added Pin To Net: NetName=PC15 Pin=Y2-4
+Added Member To Class: ClassName=Sche_Main Member=Component Y2 Xtal32768
