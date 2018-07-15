@@ -1,3 +1,4 @@
+
 /**
   ******************************************************************************
   * @file           : main.c
@@ -38,21 +39,37 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f1xx_hal.h"
-#include "WordClock.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "WordClock.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 RTC_HandleTypeDef hrtc;
+
 SPI_HandleTypeDef hspi1;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 RTC_TimeTypeDef rtc_time;
-uint8_t second, minute, hour;
-
+//RTC_DateTypeDef rtc_date;
+RTC_AlarmTypeDef alarm_time;
+bool isAlarmInterrupt = false;
+bool isRTCInterrupt = false;
+bool isSetAlarm = false;
+bool isEditButtonPressed = false;
+bool isUpButtonPressed = false;
+bool isDownButtonPressed = false;
+bool isAlarmButtonPressed = false;
+uint8_t isBuzzerRinging = 0;
+typedef enum {
+	WORD, TIME, ALARM
+}MODE;
+MODE currentMode = WORD;
+typedef enum {
+	NONE, TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT
+}EDIT_POSITION;	
+EDIT_POSITION currentEditPosition = NONE;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -63,10 +80,18 @@ static void MX_RTC_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-
+void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc);
+void HAL_RTCEx_RTCEventCallback(RTC_HandleTypeDef *hrtc);
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);
+void edit_button(void);
+void up_button(void);
+void down_button(void);
+void edit_number(uint8_t* number, int8_t operate, uint8_t param);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+
+
 
 /* USER CODE END 0 */
 
@@ -101,10 +126,16 @@ int main(void)
   MX_GPIO_Init();
   MX_SPI1_Init();
   MX_RTC_Init();
-	led_init(&hspi1);
-
   /* USER CODE BEGIN 2 */
-
+	led_init(&hspi1);
+	HAL_RTCEx_SetSecond_IT(&hrtc);
+	NVIC_EnableIRQ(RTC_IRQn);
+	HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
+	isSetAlarm = false;
+	alarm_time.AlarmTime.Hours = 0;
+  alarm_time.AlarmTime.Minutes = 0;
+  alarm_time.AlarmTime.Seconds = 1;
+  alarm_time.Alarm = RTC_ALARM_A;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -115,11 +146,86 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-  HAL_RTC_GetTime(&hrtc, &rtc_time, RTC_FORMAT_BIN);
-  display_word(&hspi1, rtc_time.Hours, rtc_time.Minutes);
-
+		if(isAlarmInterrupt){
+			HAL_GPIO_WritePin(BZ_PORT, BZ_PIN, GPIO_PIN_SET);
+			isBuzzerRinging = 1;
+			isAlarmInterrupt = false;
+		}
+		if(isAlarmButtonPressed){
+			if(isBuzzerRinging){
+				HAL_GPIO_WritePin(BZ_PORT, BZ_PIN, GPIO_PIN_RESET);
+				isBuzzerRinging = 0;				
+			}
+			if(isSetAlarm) {
+				isSetAlarm = false;
+				HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
+			}
+			else {
+				isSetAlarm = true;
+				HAL_RTC_SetAlarm_IT(&hrtc, &alarm_time, RTC_FORMAT_BIN);
+			}
+			isAlarmButtonPressed = false;
+		}
+		if(isEditButtonPressed){
+			if(isBuzzerRinging){
+				HAL_GPIO_WritePin(BZ_PORT, BZ_PIN, GPIO_PIN_RESET);
+				isBuzzerRinging = 0;				
+			}
+			edit_button();
+			isEditButtonPressed = false;
+			edit_position(&hspi1, currentEditPosition);
+		}	
+		if(isUpButtonPressed){
+			if(isBuzzerRinging){
+				HAL_GPIO_WritePin(BZ_PORT, BZ_PIN, GPIO_PIN_RESET);
+				isBuzzerRinging = 0;				
+			}
+			up_button();
+			isUpButtonPressed = false;
+		}
+		if(isDownButtonPressed){
+			if(isBuzzerRinging){
+				HAL_GPIO_WritePin(BZ_PORT, BZ_PIN, GPIO_PIN_RESET);
+				isBuzzerRinging = 0;				
+			}
+			down_button();
+			isDownButtonPressed = false;
+		}
+		if(isRTCInterrupt){
+			if(isBuzzerRinging){
+				if(isBuzzerRinging == 21){
+					HAL_GPIO_WritePin(BZ_PORT, BZ_PIN, GPIO_PIN_RESET);
+					isBuzzerRinging = 0;
+				}
+				else isBuzzerRinging++;
+			}
+			HAL_RTC_GetTime(&hrtc, &rtc_time, RTC_FORMAT_BIN);
+//			HAL_RTC_GetDate(&hrtc, &rtc_date, RTC_FORMAT_BIN);
+			switch(currentMode)
+			{
+				case WORD:{		
+					display_word(&hspi1, rtc_time.Hours, rtc_time.Minutes, rtc_time.Seconds);				
+					break;
+				}
+				case TIME:{
+					display_number(&hspi1, rtc_time.Hours, rtc_time.Minutes);
+					edit_position(&hspi1, currentEditPosition);					
+					break;
+				}
+//				case DATE:{
+//					display_number(&hspi1, rtc_date.Date, rtc_date.Month);
+//					break;
+//				}
+				case ALARM:{
+					display_number(&hspi1, alarm_time.AlarmTime.Hours, alarm_time.AlarmTime.Minutes);
+					break;
+				}
+			}
+			isRTCInterrupt = false;
+		}
   }
   /* USER CODE END 3 */
+
 }
 
 /**
@@ -185,55 +291,72 @@ void SystemClock_Config(void)
 static void MX_RTC_Init(void)
 {
 
+  /* USER CODE BEGIN RTC_Init 0 */
+
+  /* USER CODE END RTC_Init 0 */
+
   RTC_TimeTypeDef sTime;
   RTC_DateTypeDef DateToUpdate;
   RTC_AlarmTypeDef sAlarm;
 
+  /* USER CODE BEGIN RTC_Init 1 */
+
+  /* USER CODE END RTC_Init 1 */
+
     /**Initialize RTC Only 
     */
   hrtc.Instance = RTC;
-  if(HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR1) != 0x32F2){
   hrtc.Init.AsynchPrediv = RTC_AUTO_1_SECOND;
   hrtc.Init.OutPut = RTC_OUTPUTSOURCE_ALARM;
   if (HAL_RTC_Init(&hrtc) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
+  /* USER CODE BEGIN RTC_Init 2 */
+	if( HAL_RTC_GetState(& hrtc)== HAL_RTC_STATE_RESET) 
+	{
+  /* USER CODE END RTC_Init 2 */
 
     /**Initialize RTC and set the Time and Date 
     */
-  sTime.Hours = 1;
-  sTime.Minutes = 10;
-  sTime.Seconds = 40;
+  sTime.Hours = 6;
+  sTime.Minutes = 27;
+  sTime.Seconds = 0;
 
   if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BIN) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
+  /* USER CODE BEGIN RTC_Init 3 */
+
+  /* USER CODE END RTC_Init 3 */
 
   DateToUpdate.WeekDay = RTC_WEEKDAY_MONDAY;
-  DateToUpdate.Month = RTC_MONTH_MARCH;
-  DateToUpdate.Date = 19;
+  DateToUpdate.Month = RTC_MONTH_JULY;
+  DateToUpdate.Date = 14;
   DateToUpdate.Year = 18;
 
   if (HAL_RTC_SetDate(&hrtc, &DateToUpdate, RTC_FORMAT_BIN) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
+  /* USER CODE BEGIN RTC_Init 4 */
+
+  /* USER CODE END RTC_Init 4 */
 
     /**Enable the Alarm A 
     */
-  sAlarm.AlarmTime.Hours = 0;
-  sAlarm.AlarmTime.Minutes = 0;
-  sAlarm.AlarmTime.Seconds = 0;
+  sAlarm.AlarmTime.Hours = 4;
+  sAlarm.AlarmTime.Minutes = 31;
+  sAlarm.AlarmTime.Seconds = 1;
   sAlarm.Alarm = RTC_ALARM_A;
   if (HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BIN) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
-
-    HAL_RTCEx_BKUPWrite(&hrtc,RTC_BKP_DR1,0x32F2);
-  }
+  /* USER CODE BEGIN RTC_Init 5 */
+	}
+  /* USER CODE END RTC_Init 5 */
 
 }
 
@@ -277,19 +400,275 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6|GPIO_PIN_8, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : PA6 */
-  GPIO_InitStruct.Pin = GPIO_PIN_6;
+  /*Configure GPIO pins : PA6 PA8 */
+  GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_8;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PB12 PB13 PB14 PB15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
+{
+	isAlarmInterrupt = true;
+}
+
+void HAL_RTCEx_RTCEventCallback(RTC_HandleTypeDef *hrtc)
+{
+	if(RTC_IT_SEC) {
+		isRTCInterrupt = true;
+	}
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+		if (GPIO_Pin == GPIO_PIN_15)
+	 {
+			isEditButtonPressed = true;
+	 }
+		if (GPIO_Pin == GPIO_PIN_14)
+	 {
+			isUpButtonPressed = true;
+	 }
+	 	if (GPIO_Pin == GPIO_PIN_13)
+	 {
+			isDownButtonPressed = true;
+	 }
+	 if (GPIO_Pin == GPIO_PIN_12)
+	 {
+			isAlarmButtonPressed = true;
+	 }
+}
+
+void edit_button(void)
+{
+	if(currentMode == WORD) return;
+	uint8_t temp = currentEditPosition; 
+	temp = (temp == BOTTOM_RIGHT)? NONE: temp + 1;
+	currentEditPosition = (EDIT_POSITION)temp;
+}
+
+void up_button(void)
+{
+		 if(currentEditPosition == NONE){
+			 uint8_t temp = currentMode; 
+			 temp = (temp == ALARM)? WORD: temp + 1;
+			 currentMode = (MODE)temp;
+		 }
+		 else{
+			 switch(currentMode)
+			{
+				case TIME:{
+					switch (currentEditPosition)
+					{
+						case TOP_LEFT: {
+							edit_number(&rtc_time.Hours, 10, 14);
+							break;
+						}
+						case TOP_RIGHT: {
+							edit_number(&rtc_time.Hours, 1, 23);
+							break;
+						}
+						case BOTTOM_LEFT: {
+							edit_number(&rtc_time.Minutes, 10, 50);
+							break;
+						}
+						case BOTTOM_RIGHT: {
+							edit_number(&rtc_time.Minutes, 1, 59);
+							break;
+						}
+						default: break;
+					}
+					HAL_RTC_SetTime(&hrtc, &rtc_time, RTC_FORMAT_BIN);
+					break;
+				}
+//				case DATE:{
+//					switch (currentEditPosition)
+//					{
+//						case TOP_LEFT: {
+//							edit_number(&rtc_date.Date, 10, 22);
+//							break;
+//						}
+//						case TOP_RIGHT: {
+//							edit_number(&rtc_date.Date, 1, 31);
+//							break;
+//						}
+//						case BOTTOM_LEFT: {
+//							edit_number(&rtc_date.Month, 10, 3);
+//							break;
+//						}
+//						case BOTTOM_RIGHT: {
+//							edit_number(&rtc_date.Month, 1, 12);
+//							break;
+//						}
+//						default: break;
+//					}
+//					HAL_RTC_SetDate(&hrtc, &rtc_date, RTC_FORMAT_BIN);
+//					break;
+//				}
+				case ALARM:{
+					switch (currentEditPosition)
+					{
+						case TOP_LEFT: {
+							edit_number(&alarm_time.AlarmTime.Hours, 10, 14);
+							break;
+						}
+						case TOP_RIGHT: {
+							edit_number(&alarm_time.AlarmTime.Hours, 1, 23);
+							break;
+						}
+						case BOTTOM_LEFT: {
+							edit_number(&alarm_time.AlarmTime.Minutes, 10, 50);
+							break;
+						}
+						case BOTTOM_RIGHT: {
+							edit_number(&alarm_time.AlarmTime.Minutes, 1, 59);
+							break;
+						}
+						default: break;
+					}
+					break;
+				}
+				default: break;
+			}
+		 }
+}	
+
+void down_button(void)
+{
+		 if(currentEditPosition == NONE){
+			 uint8_t temp = currentMode; 
+			 temp = (temp == WORD)? ALARM: temp - 1;
+			 currentMode = (MODE)temp;
+		 }	
+		 else{
+				switch(currentMode)
+			{
+				case TIME:{
+					switch (currentEditPosition)
+					{
+						case TOP_LEFT: {
+							edit_number(&rtc_time.Hours, -10, 9);
+							break;
+						}
+						case TOP_RIGHT: {
+							edit_number(&rtc_time.Hours, -1, 0);
+							break;
+						}
+						case BOTTOM_LEFT: {
+							edit_number(&rtc_time.Minutes, -10, 9);
+							break;
+						}
+						case BOTTOM_RIGHT: {
+							edit_number(&rtc_time.Minutes, -1, 0);
+							break;
+						}
+						default: break;
+					}
+					HAL_RTC_SetTime(&hrtc, &rtc_time, RTC_FORMAT_BIN);
+					break;
+				}
+//				case DATE:{
+//					switch (currentEditPosition)
+//					{
+//						case TOP_LEFT: {
+//							edit_number(&rtc_date.Date, -10, 9);
+//							break;
+//						}
+//						case TOP_RIGHT: {
+//							edit_number(&rtc_date.Date, -1, 1);
+//							break;
+//						}
+//						case BOTTOM_LEFT: {
+//							edit_number(&rtc_date.Month, -10, 9);
+//							break;
+//						}
+//						case BOTTOM_RIGHT: {
+//							edit_number(&rtc_date.Month, -1, 1);
+//							break;
+//						}
+//						default: break;
+//					}
+//					HAL_RTC_SetDate(&hrtc, &rtc_date, RTC_FORMAT_BIN);
+//					break;
+//				}
+				case ALARM:{
+					switch (currentEditPosition)
+					{
+						case TOP_LEFT: {
+							edit_number(&alarm_time.AlarmTime.Hours, -10, 9);
+							break;
+						}
+						case TOP_RIGHT: {
+							edit_number(&alarm_time.AlarmTime.Hours, -1, 0);
+							break;
+						}
+						case BOTTOM_LEFT: {
+							edit_number(&alarm_time.AlarmTime.Minutes, -10, 9);
+							break;
+						}
+						case BOTTOM_RIGHT: {
+							edit_number(&alarm_time.AlarmTime.Minutes, -1, 0);
+							break;
+						}
+						default: break;
+					}
+					break;
+				}
+				default: break;
+			}
+		 }		 
+}
+
+void edit_number(uint8_t* number, int8_t operate, uint8_t param)
+{
+	switch(operate)
+	{
+		case 1:
+		{
+			*number = (*number == param) ? *number : *number + 1;
+			break;
+		}
+		case -1:
+		{
+			*number = (*number == param) ? *number : *number - 1;
+			break;
+		}
+		case 10:
+		{
+			*number = (*number >= param) ? *number : *number + 10;
+			break;
+		}
+		case -10:
+		{
+			*number = (*number <= param) ? *number : *number - 10;
+			break;
+		}
+		default: break;
+	}
+}
+
+bool getAlarmStatus(void)
+{
+	return isSetAlarm;
+}
 
 /* USER CODE END 4 */
 
